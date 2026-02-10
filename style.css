@@ -1,0 +1,634 @@
+/* ============================================
+   Wind Axe Craft Calculator
+   Theme: Ragnarok M: Classic Global - Dark Mode
+   Soft rounded UI with deep blue/purple palette
+   ============================================ */
+
+:root {
+  /* Deep backgrounds inspired by RO M night-time UI */
+  --bg-body: #141221;
+  --bg-card: #1c1a2e;
+  --bg-card-sub: #1f1d34;
+  --bg-input: #252340;
+  --bg-row: #1e1c33;
+  --bg-row-hover: #26243f;
+  --bg-header: linear-gradient(135deg, #3a5998 0%, #4e6db5 50%, #6882c4 100%);
+
+  /* Borders */
+  --border: #2e2c4a;
+  --border-focus: #6882c4;
+  --border-craft: #7b6bbd;
+
+  /* Text */
+  --text-primary: #e4e1f0;
+  --text-secondary: #a09bb5;
+  --text-muted: #6e6988;
+  --text-on-blue: #ffffff;
+
+  /* Accents - soft pastel on dark */
+  --accent-blue: #6b8cc7;
+  --accent-blue-light: rgba(107, 140, 199, 0.12);
+  --accent-pink: #d88098;
+  --accent-gold: #d4a545;
+  --accent-gold-light: rgba(212, 165, 69, 0.1);
+  --accent-green: #6db89a;
+  --accent-purple: #9b8ec4;
+  --accent-purple-light: rgba(155, 142, 196, 0.1);
+  --accent-orange: #d4944e;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  /* Radius - rounded for mobile-game feel */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 30% 0%, rgba(107, 140, 199, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 100%, rgba(155, 142, 196, 0.05) 0%, transparent 60%);
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+/* ---- Header ---- */
+header {
+  text-align: center;
+  padding: 2rem 1.5rem 2.5rem;
+  margin: 0 -1rem 2rem;
+  background: var(--bg-header);
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(58, 89, 152, 0.3);
+}
+
+.header-badge {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  color: var(--text-on-blue);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-on-blue);
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  margin-top: 0.25rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ---- Input Section ---- */
+.input-section {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.input-section label {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.input-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group:focus-within {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(107, 140, 199, 0.2);
+}
+
+.btn-adjust {
+  width: 48px;
+  height: 48px;
+  background: var(--bg-input);
+  border: none;
+  color: var(--accent-blue);
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.btn-adjust:hover {
+  background: rgba(107, 140, 199, 0.15);
+}
+
+.btn-adjust:active {
+  background: rgba(107, 140, 199, 0.25);
+}
+
+#axe-count {
+  width: 90px;
+  height: 48px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent-blue);
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  -moz-appearance: textfield;
+}
+
+#axe-count::-webkit-outer-spin-button,
+#axe-count::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ---- Recipe Cards ---- */
+.recipe-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.recipe-card.sub-recipe {
+  background: var(--bg-card-sub);
+  border-color: rgba(155, 142, 196, 0.2);
+  border-left: 3px solid var(--accent-purple);
+}
+
+.recipe-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.recipe-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.recipe-badge {
+  padding: 0.2rem 0.6rem;
+  background: var(--accent-blue-light);
+  color: var(--accent-blue);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.recipe-badge.sub {
+  background: var(--accent-purple-light);
+  color: var(--accent-purple);
+}
+
+/* ---- Materials Table ---- */
+.materials-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+.materials-table thead th {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0 0.5rem 0.5rem;
+  text-align: left;
+}
+
+.th-qty, .th-price, .th-cost {
+  text-align: right;
+}
+
+.materials-table tbody tr {
+  background: var(--bg-row);
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.materials-table tbody tr:hover {
+  background: var(--bg-row-hover);
+}
+
+.sub-recipe .materials-table tbody tr {
+  background: rgba(155, 142, 196, 0.05);
+}
+
+.sub-recipe .materials-table tbody tr:hover {
+  background: rgba(155, 142, 196, 0.1);
+}
+
+.materials-table tbody tr.row-craft {
+  background: rgba(155, 142, 196, 0.08);
+}
+
+.materials-table tbody td {
+  padding: 0.6rem 0.5rem;
+  vertical-align: middle;
+}
+
+.materials-table tbody td:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.materials-table tbody td:last-child {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.td-material {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.td-qty {
+  text-align: right;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent-blue);
+  white-space: nowrap;
+}
+
+.td-price {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.td-cost {
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* ---- Material Icons ---- */
+img.material-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px;
+  border: 1px solid var(--border);
+  image-rendering: pixelated;
+}
+
+.summary-item img.material-icon {
+  width: 28px;
+  height: 28px;
+  padding: 1px;
+}
+
+.material-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  display: block;
+  line-height: 1.2;
+}
+
+.material-per {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 1px;
+}
+
+.craft-tag {
+  display: inline-block;
+  padding: 1px 5px;
+  background: var(--accent-purple-light);
+  color: var(--accent-purple);
+  border-radius: 4px;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+
+.craft-note {
+  font-size: 0.7rem;
+  color: var(--accent-purple);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Shared price display (mirrors the price from Wind Axe section) */
+.shared-price {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Zeny currency indicator */
+.zeny {
+  font-size: 0.75em;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+/* ---- Price Input ---- */
+.price-input {
+  width: 72px;
+  padding: 0.25rem 0.4rem;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: right;
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  -moz-appearance: textfield;
+}
+
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price-input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(107, 140, 199, 0.2);
+}
+
+/* ---- Totals ---- */
+.recipe-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--border);
+}
+
+.recipe-total > span:first-child {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.total-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent-blue);
+}
+
+.total-value.sub {
+  color: var(--accent-purple);
+}
+
+/* ---- Summary Section (Grand Total) ---- */
+.summary-section {
+  border: 1.5px solid rgba(212, 165, 69, 0.2);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+  /* Subtle golden tint on dark */
+  background: linear-gradient(135deg, #1e1c30, #221f35, #1e1c30);
+}
+
+.summary-section h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 0.15rem;
+}
+
+.summary-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(212, 165, 69, 0.08);
+}
+
+.summary-name {
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.summary-qty {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.grand-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(212, 165, 69, 0.2);
+}
+
+.grand-total-label {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.grand-total-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.grand-total-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  text-shadow: 0 1px 8px rgba(212, 165, 69, 0.15);
+}
+
+.grand-total-zeny {
+  font-size: 0.9rem;
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+/* ---- Footer ---- */
+footer {
+  text-align: center;
+  padding: 0.75rem 0;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* ---- Animations ---- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.recipe-card {
+  animation: fadeInUp 0.35s ease-out;
+}
+
+.sub-recipe {
+  animation: fadeInUp 0.35s ease-out 0.08s both;
+}
+
+.summary-section {
+  animation: fadeInUp 0.35s ease-out 0.16s both;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.value-changed {
+  animation: pulse 0.2s ease-in-out;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  header {
+    padding: 1.5rem 1rem 2rem;
+    margin: 0 -1rem 1.5rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0 0.75rem 1.5rem;
+  }
+
+  .recipe-card {
+    padding: 1rem;
+  }
+
+  .materials-table thead {
+    display: none;
+  }
+
+  .materials-table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    margin-bottom: 4px;
+    border-radius: var(--radius-sm);
+    gap: 0.25rem;
+  }
+
+  .materials-table tbody td {
+    padding: 0.2rem 0.25rem;
+  }
+
+  .materials-table tbody td:first-child {
+    border-radius: 0;
+  }
+
+  .materials-table tbody td:last-child {
+    border-radius: 0;
+  }
+
+  .td-material {
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  .td-qty, .td-price, .td-cost {
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grand-total {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .grand-total-value {
+    font-size: 1.5rem;
+  }
+}

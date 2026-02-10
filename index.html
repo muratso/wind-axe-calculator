@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wind Axe Craft Calculator - Ragnarok M</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="header-badge">Ragnarok M: Classic Global</div>
+      <h1>Wind Axe</h1>
+      <p class="subtitle">Craft Calculator</p>
+    </header>
+
+    <main>
+      <!-- Input Section -->
+      <section class="input-section">
+        <label for="axe-count">Quantas Wind Axes deseja craftar?</label>
+        <div class="input-group">
+          <button class="btn-adjust" id="btn-minus" aria-label="Diminuir">−</button>
+          <input type="number" id="axe-count" value="1" min="1" max="9999">
+          <button class="btn-adjust" id="btn-plus" aria-label="Aumentar">+</button>
+        </div>
+      </section>
+
+      <!-- Wind Axe Recipe -->
+      <section class="recipe-card">
+        <div class="recipe-header">
+          <h2>Wind Axe Recipe</h2>
+          <span class="recipe-badge" id="axe-badge">x1</span>
+        </div>
+
+        <table class="materials-table">
+          <thead>
+            <tr>
+              <th class="th-material">Material</th>
+              <th class="th-qty">Qtd</th>
+              <th class="th-price">Preco un.</th>
+              <th class="th-cost">Custo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/rough-wind.png" alt="Rough Wind">
+                <div>
+                  <span class="material-name">Rough Wind</span>
+                  <span class="material-per">50 / axe</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-rough-wind">50</td>
+              <td class="td-price"><input type="number" class="price-input" id="price-rough-wind" value="3000" min="0"></td>
+              <td class="td-cost"><span id="cost-rough-wind">150.000</span> <span class="zeny">z</span></td>
+            </tr>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/steel.png" alt="Steel">
+                <div>
+                  <span class="material-name">Steel</span>
+                  <span class="material-per">120 / axe</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-steel">120</td>
+              <td class="td-price"><input type="number" class="price-input" id="price-steel" value="1396" min="0"></td>
+              <td class="td-cost"><span id="cost-steel">167.520</span> <span class="zeny">z</span></td>
+            </tr>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/black-magic-ore.png" alt="Black Magic Ore">
+                <div>
+                  <span class="material-name">Black Magic Ore</span>
+                  <span class="material-per">30 / axe</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-bmo">30</td>
+              <td class="td-price"><input type="number" class="price-input" id="price-bmo" value="720" min="0"></td>
+              <td class="td-cost"><span id="cost-bmo">21.600</span> <span class="zeny">z</span></td>
+            </tr>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/magic-gear-fuel.png" alt="Magic Gear Fuel">
+                <div>
+                  <span class="material-name">Magic Gear Fuel</span>
+                  <span class="material-per">400 / axe</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-mgf">400</td>
+              <td class="td-price"><input type="number" class="price-input" id="price-mgf" value="0" min="0"></td>
+              <td class="td-cost"><span id="cost-mgf">0</span> <span class="zeny">z</span></td>
+            </tr>
+            <tr class="row-craft">
+              <td class="td-material">
+                <img class="material-icon" src="img/element-alloy.png" alt="Element Alloy">
+                <div>
+                  <span class="material-name">Element Alloy <span class="craft-tag">CRAFT</span></span>
+                  <span class="material-per">100 / axe</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-element-alloy">100</td>
+              <td class="td-price"><span class="craft-note">ver abaixo</span></td>
+              <td class="td-cost"><span id="cost-element-alloy">338.800</span> <span class="zeny">z</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="recipe-total">
+          <span>Custo por Wind Axe</span>
+          <span class="total-value" id="total-wind-axe">677.920 <span class="zeny">z</span></span>
+        </div>
+      </section>
+
+      <!-- Element Alloy Sub-recipe -->
+      <section class="recipe-card sub-recipe">
+        <div class="recipe-header">
+          <h2>Element Alloy</h2>
+          <span class="recipe-badge sub" id="alloy-badge">x100</span>
+        </div>
+
+        <table class="materials-table">
+          <thead>
+            <tr>
+              <th class="th-material">Material</th>
+              <th class="th-qty">Qtd</th>
+              <th class="th-price">Preco un.</th>
+              <th class="th-cost">Custo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/steel.png" alt="Steel">
+                <div>
+                  <span class="material-name">Steel</span>
+                  <span class="material-per">1 / alloy</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-alloy-steel">100</td>
+              <td class="td-price"><span class="shared-price" id="shared-price-steel">1.396</span> <span class="zeny">z</span></td>
+              <td class="td-cost"><span id="cost-alloy-steel">139.600</span> <span class="zeny">z</span></td>
+            </tr>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/coal.png" alt="Coal">
+                <div>
+                  <span class="material-name">Coal</span>
+                  <span class="material-per">1 / alloy</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-alloy-coal">100</td>
+              <td class="td-price"><input type="number" class="price-input" id="price-coal" value="1272" min="0"></td>
+              <td class="td-cost"><span id="cost-alloy-coal">127.200</span> <span class="zeny">z</span></td>
+            </tr>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/black-magic-ore.png" alt="Black Magic Ore">
+                <div>
+                  <span class="material-name">Black Magic Ore</span>
+                  <span class="material-per">1 / alloy</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-alloy-bmo">100</td>
+              <td class="td-price"><span class="shared-price" id="shared-price-bmo">720</span> <span class="zeny">z</span></td>
+              <td class="td-cost"><span id="cost-alloy-bmo">72.000</span> <span class="zeny">z</span></td>
+            </tr>
+            <tr>
+              <td class="td-material">
+                <img class="material-icon" src="img/magic-gear-fuel.png" alt="Magic Gear Fuel">
+                <div>
+                  <span class="material-name">Magic Gear Fuel</span>
+                  <span class="material-per">5 / alloy</span>
+                </div>
+              </td>
+              <td class="td-qty" id="qty-alloy-mgf">500</td>
+              <td class="td-price"><span class="shared-price" id="shared-price-mgf">0</span> <span class="zeny">z</span></td>
+              <td class="td-cost"><span id="cost-alloy-mgf">0</span> <span class="zeny">z</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="recipe-total">
+          <span>Custo Total Element Alloy</span>
+          <span class="total-value sub" id="total-element-alloy">338.800 <span class="zeny">z</span></span>
+        </div>
+      </section>
+
+      <!-- Grand Total with combined materials -->
+      <section class="summary-section">
+        <h2>Resumo Total de Materiais</h2>
+        <p class="summary-desc">Materiais necessarios incluindo sub-craft do Element Alloy</p>
+
+        <div class="summary-grid">
+          <div class="summary-item">
+            <img class="material-icon" src="img/rough-wind.png" alt="Rough Wind">
+            <span class="summary-name">Rough Wind</span>
+            <span class="summary-qty" id="total-rough-wind">50</span>
+          </div>
+          <div class="summary-item">
+            <img class="material-icon" src="img/steel.png" alt="Steel">
+            <span class="summary-name">Steel</span>
+            <span class="summary-qty" id="total-steel">220</span>
+          </div>
+          <div class="summary-item">
+            <img class="material-icon" src="img/coal.png" alt="Coal">
+            <span class="summary-name">Coal</span>
+            <span class="summary-qty" id="total-coal">100</span>
+          </div>
+          <div class="summary-item">
+            <img class="material-icon" src="img/black-magic-ore.png" alt="Black Magic Ore">
+            <span class="summary-name">Black Magic Ore</span>
+            <span class="summary-qty" id="total-bmo-all">130</span>
+          </div>
+          <div class="summary-item">
+            <img class="material-icon" src="img/magic-gear-fuel.png" alt="Magic Gear Fuel">
+            <span class="summary-name">Magic Gear Fuel</span>
+            <span class="summary-qty" id="total-mgf-all">900</span>
+          </div>
+        </div>
+
+        <div class="grand-total">
+          <span class="grand-total-label">Custo Total</span>
+          <div class="grand-total-amount">
+            <span class="grand-total-value" id="grand-total">677.920</span>
+            <span class="grand-total-zeny">zeny</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Wind Axe Craft Calculator &mdash; Ragnarok M: Classic Global</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
